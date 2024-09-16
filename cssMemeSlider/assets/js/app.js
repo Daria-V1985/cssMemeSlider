@@ -1,11 +1,11 @@
 const slider = document.querySelector('.slider');
-const sliderTrack = document.querySelector('.slider__track');
-const sliderTrackItem = slider.querySelectorAll('.slider__track-item');
-const dotsFuture = document.querySelector('.slider__dots');
+const sliderTrack = slider.querySelector('.slider__track');
+const sliderTrackItem = document.querySelectorAll('.slider__track-item');
+const sliderDots = document.querySelector('.slider__dots');
 const sliderImages = document.querySelectorAll('.slider__track-img');
 
 let slideIndex = 0;
-let sliderWidth = slider.clientWidth;
+let sliderWidth;
 const dots = [];
 
 // Добавление элементов dots в слайдер
@@ -20,11 +20,11 @@ for(let i = 0; i < sliderTrackItem.length; i++) {
 
   dot.addEventListener('click', showSlideDots);
   
-  dotsFuture.append(dot); 
+  sliderDots.append(dot); 
   dots.push(dot);
 }
 
-// Переключение слайдов
+// Переключение слайдов через пагинацию
 
 function showSlideDots(e) {
   const slideTo = e.target.dataset.slideTo;
@@ -40,10 +40,9 @@ function showSlideDots(e) {
 // Адаптивность слайдера
 
 const adaptiveSlide = () => {
-  sliderWidth = sliderTrack.offsetWidth;
-  sliderTrackItem.style.width = sliderWidth * sliderImages.length + 'px';
-  sliderImages.forEach(e => e.style.width = sliderWidth + 'px');
+  sliderWidth = slider.offsetWidth;
+  slider.style.width = sliderWidth * sliderTrack.length + 'px';
+  sliderTrackItem.forEach(item => item.style.width = sliderWidth + 'px');
 }
 
 window.addEventListener('resize', adaptiveSlide);
-
