@@ -40,7 +40,7 @@ input[name = 'radio']{
   height: 100%;
   display: flex;
   color: #fff;
-  font-size: clamp(1.2rem, 1vw, 1.5rem);
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
 }
 .slider__item {
   border-radius: 2rem;
